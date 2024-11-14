@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -48,7 +49,13 @@ class CustomTextField extends StatelessWidget {
       obscureText: isPassword,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(color: Colors.grey,fontSize: 16.sp),
+        contentPadding: EdgeInsets.all(12.sp),
+        fillColor: Colors.grey[100],
+        filled: true,
         border: const OutlineInputBorder(
+          borderSide: BorderSide.none,
+          
           borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
       ),

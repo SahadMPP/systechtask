@@ -4,11 +4,11 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/model/user.dart';
 import 'package:flutter_application_1/service/remote/user_api.dart';
 import 'package:flutter_application_1/utils/const/const_values.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../model/user.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';

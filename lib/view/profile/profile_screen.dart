@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/controller/profile_controll/profile_bloc.dart';
+import 'package:flutter_application_1/controller/profile_controller/profile_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sizer/sizer.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -43,11 +44,11 @@ class ProfileScreen extends StatelessWidget {
               )),
         ],
         centerTitle: true,
-        title: const Text(
+        title: Text(
           'Profile',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontSize: 18.sp,
           ),
         ),
       ),
@@ -65,22 +66,33 @@ class ProfileScreen extends StatelessWidget {
               return Column(
                 children: [
                   const SizedBox(height: 30),
-                   CircleAvatar(
-                    radius: 55,
-                    backgroundImage: NetworkImage(state.user.avatar),
-                    onBackgroundImageError: (exception, stackTrace) => const Text("FAIL"),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(70),
+                    child: CircleAvatar(
+                      radius: 30.sp,
+                      child: Image(
+                        image: NetworkImage(state.user.avatar),
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Image(
+                            image: AssetImage('asset/download.png'),
+                            fit: BoxFit.cover,
+                          );
+                        },
+                      ),
+                    ),
                   ),
-                  const SizedBox(height: 10),
-                   Text(
+                   SizedBox(height: 2.h),
+                  Text(
                     state.user.name,
-                    style: const TextStyle(
+                    style:  TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 18.sp,
                     ),
                   ),
                   const SizedBox(height: 30),
                   Container(
-                    padding: const EdgeInsets.all(12),
+                    padding:  EdgeInsets.all(14.sp),
                     height: MediaQuery.of(context).size.height * .28,
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -113,9 +125,9 @@ class ProfileScreen extends StatelessWidget {
       children: [
         Text(
           '$title :',
-          style: const TextStyle(
+          style:  TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 16,
+            fontSize: 16.sp,
           ),
         ),
         ConstrainedBox(
@@ -126,9 +138,9 @@ class ProfileScreen extends StatelessWidget {
             value,
             maxLines: 2,
             overflow: TextOverflow.clip,
-            style: const TextStyle(
+            style:  TextStyle(
                 fontWeight: FontWeight.normal,
-                fontSize: 14,
+                fontSize: 14.sp,
                 color: Colors.grey),
           ),
         ),
